@@ -54,11 +54,12 @@ export default async function handler(
                 fallen: true
             })
 
-            await axios.post("https://api.telegram.org/bot5802433708:AAHPM3_4da2-7PrdPv4-gF_S8__hoiL0HHc/sendMessage", {
+            await axios.post(
+                "https://api.telegram.org/bot5802433708:AAHPM3_4da2-7PrdPv4-gF_S8__hoiL0HHc/sendPhoto", {
                     chat_id: '919917110',
                     photo: body.image,
                     // @ts-ignore
-                    text: `${doc.data().person_name} has fallen down at ${doc.data().address}}. Please respond in time. We are continuously monitoring.`,
+                    caption: `<strong>${doc.data().person_name}</strong> has fallen down at ${doc.data().address}. Please respond in time. We are continuously monitoring.`,
                     parse_mode: "HTML"
                 }
             )
