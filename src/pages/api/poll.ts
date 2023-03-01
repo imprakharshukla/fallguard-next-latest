@@ -24,9 +24,23 @@ export default async function handler(
                 console.log("No active incidents")
                 // @ts-ignore
                 res.status(200).json({response: "No active incidents"})
+                admin.firestore().collection('devices')
+                    .doc(requestData.device_id)
+                    .update({
+                        incident_id: "",
+                        fallen: false
+                    })
+
             } else {
                 console.log("Found an active incident")
                 // @ts-ignore
+                admin.firestore().collection('devices')
+                    .doc(requestData.device_id)
+                    .update({
+                        incident_id: snapshot.docs[0].id,
+                        fallen: true
+                    })
+
                 res.status(200).json({response: snapshot.docs[0].data()})
             }
         })

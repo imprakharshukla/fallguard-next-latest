@@ -37,12 +37,12 @@ export default async function handler(
     const data = doc.data();
     if (data) {
         try {
-            await admin.firestore().collection('incidents').doc(body.device_id).set({
+            await admin.firestore().collection('incidents').add({
                 time: body.time,
                 image: body.image,
                 device_id: body.device_id,
                 fallen: true
-            }, {merge: true})
+            })
             res.status(200).json({response: "Added the incident"})
         } catch (e) {
             console.log({error: e})
