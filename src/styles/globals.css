@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100;300;400;500;600;700;800;900&family=Roboto+Mono:wght@100;300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .grow-on-hover {
+    @apply transform transition hover:scale-105 cursor-pointer ease-in-out duration-150;
+  }
+
+  .shrink-on-hover {
+    @apply transform transition hover:scale-95 cursor-pointer ease-in-out duration-150;
+  }
+
+  .up-on-hover {
+    @apply transform transition hover:-translate-y-0.5 cursor-pointer ease-in-out duration-150;
+  }
+
+  .down-on-hover {
+    @apply transform transition hover:translate-y-0.5 cursor-pointer ease-in-out duration-150;
+  }
+
+  .left-on-hover {
+    @apply transform transition hover:-translate-x-0.5 cursor-pointer ease-in-out duration-150;
+  }
+
+  .right-on-hover {
+    @apply transform transition hover:translate-x-0.5 cursor-pointer ease-in-out duration-150;
+  }
+}
