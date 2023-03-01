@@ -34,6 +34,7 @@ export default async function handler(
     // }
 
     // update the doc with the new photo
+    console.log("Received a request!")
     const doc = await admin.firestore().collection('devices').doc(body.device_id).get();
     const data = doc.data();
     if (data) {
@@ -54,6 +55,8 @@ export default async function handler(
                 fallen: true
             })
 
+            console.log("Sending a message to telegram")
+
             await axios.post(
                 "https://api.telegram.org/bot5802433708:AAHPM3_4da2-7PrdPv4-gF_S8__hoiL0HHc/sendPhoto", {
                     chat_id: '919917110',
@@ -63,6 +66,7 @@ export default async function handler(
                     parse_mode: "HTML"
                 }
             )
+            console.log("Sent a message to telegram")
             res.status(200).json({response: "Added the incident"})
         } catch (e) {
             console.log({error: e})

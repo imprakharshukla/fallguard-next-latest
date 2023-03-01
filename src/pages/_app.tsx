@@ -21,18 +21,20 @@ export default function App({Component, pageProps}: ComponentWithLayout) {
                 Toggle&nbsp;Theme&nbsp;-
                 <DarkModeToggle/>
             </div>
-            {
-                Component.pageLayout ?
-                    (
-                        <Component.pageLayout {...pageProps}>
+            <div className={"bg-gray-900 min-h-[calc(100vh-50rem)]"}>
+                {
+                    Component.pageLayout ?
+                        (
+                            <Component.pageLayout {...pageProps}>
+                                <Component {...pageProps}/>
+                            </Component.pageLayout>
+                        )
+                        :
+                        (
                             <Component {...pageProps}/>
-                        </Component.pageLayout>
-                    )
-                    :
-                    (
-                        <Component {...pageProps}/>
-                    )
-            }
+                        )
+                }
+            </div>
         </ThemeProvider>
     );
 }

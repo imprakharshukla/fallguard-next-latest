@@ -75,8 +75,7 @@ const Home = () => {
                                         <p className="w-12 h-12 -mt-12 absolute z-10 rounded-full bg-green-400"></p>
                                     </div>
                                 </div>
-                                <h1 className="mb-4 text-4xl mt-10 font-extrabold tracking-tight leading-none text-gray-800 md:text-5xl lg:text-6xl dark:text-white">All
-                                    good!</h1>
+                                <h1 className="mb-4 text-4xl mt-10 font-extrabold tracking-tight leading-none text-gray-800 md:text-5xl lg:text-6xl dark:text-white">Keeping you Safe</h1>
                                 <p className="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">We
                                     have not detected any incidents! We are monitoring things in realtime.</p>
                                 {deviceData &&
@@ -84,7 +83,7 @@ const Home = () => {
                                         <p className="mb-8 text-md font-normal text-gray-400 sm:px-16 xl:px-48 dark:text-gray-400">{`${deviceData.person_name} - ${deviceData.address}`}
                                         </p>
 
-                                        <p className="mb-8 mx-auto dark:bg-gray-800 px-3 py-3 bg-gray-100 rounded-full w-fit text-md font-normal text-gray-400 sm:px-16 xl:px-48 dark:text-gray-400">{`${deviceData.caretaker_phone} - ${deviceData.caretaker_name}`}
+                                        <p className="mb-8 mx-auto dark:bg-gray-800 px-5 py-3 bg-gray-100 rounded-full w-fit text-md font-normal text-gray-400 sm:px-16 xl:px-48 dark:text-gray-400">{`${deviceData.caretaker_phone} - ${deviceData.caretaker_name}`}
                                         </p>
                                     </div>
                                 }
@@ -105,7 +104,7 @@ const Home = () => {
                                 <p className="mb-8 text-md font-normal text-gray-400 sm:px-16 xl:px-48 dark:text-gray-400">{`${deviceData.person_name} - ${deviceData.address}`}
                                 </p>
 
-                                <p className="mb-8 mx-auto dark:bg-gray-800 px-3 py-3 bg-gray-100 rounded-full w-fit text-md font-normal text-gray-400 sm:px-16 xl:px-48 dark:text-gray-400">{`${deviceData.caretaker_phone} - ${deviceData.caretaker_name}`}
+                                <p className="mb-8 mx-auto dark:bg-gray-800 px-5 py-3 bg-gray-100 rounded-full w-fit text-md font-normal text-gray-400 sm:px-16 xl:px-48 dark:text-gray-400">{`${deviceData.caretaker_phone} - ${deviceData.caretaker_name}`}
                                 </p>
                                 {currentIncident?.image &&
                                     <div className={"flex justify-center items-center"}>
