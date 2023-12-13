@@ -1,7 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type {NextApiRequest, NextApiResponse} from 'next'
-import {initFirebase} from "@/pages/api/_firebase/init";
-import admin from "firebase-admin";
 import axios from "axios";
 
 
@@ -37,7 +35,4 @@ export default async function handler(
             console.log({error: e})
             res.status(400).json({error: e})
         }
-    }
-
-
 }
