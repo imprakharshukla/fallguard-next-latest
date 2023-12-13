@@ -10,59 +10,24 @@ export default async function handler(
     res: NextApiResponse
 ) {
 
-    await initFirebase()
+    
     let body: {
-        time: number
-        image: string
+        time: number,
+        image: string,
+        name: string,
+        location: string,
         device_id: string,
     } = req.body;
     console.log({body});
-
-    // {
-    //     "status": {
-    //     "emergency_response_number": "104",
-    //         "last_incident": {
-    //         "_seconds": 1677646056,
-    //             "_nanoseconds": 507000000
-    //     },
-    //     "caretaker_phone": 9936301367,
-    //         "caretaker_name": "Prakhar",
-    //         "person_name": "",
-    //         "fallen": false,
-    //         "address": "Sector 137, Noida"
-    // }
-    // }
-
-    // update the doc with the new photo
-    console.log("Received a request!")
-    const doc = await admin.firestore().collection('devices').doc(body.device_id).get();
-    const data = doc.data();
-    if (data) {
-        const snap = await admin.firestore().collection('incidents').get()
-        snap.forEach(doc => {
-            console.log(doc.id, '=>', doc.data());
-            //update the doc fallen to true
-            admin.firestore().collection('incidents').doc(doc.id).update({
-                fallen: false
-            })
-        })
-        res.status(200).json({response: "Added the incident"})
         try {
-            await admin.firestore().collection('incidents').add({
-                time: body.time,
-                image: body.image,
-                device_id: body.device_id,
-                fallen: true
-            })
-
             console.log("Sending a message to telegram")
 
             await axios.post(
-                "https://api.telegram.org/bot5802433708:AAHPM3_4da2-7PrdPv4-gF_S8__hoiL0HHc/sendPhoto", {
-                    chat_id: '919917110',
+                "https://api.telegram.org/bot6713449238:AAGkdF2Z1G-f_bzd-vEQVrPPSjJd8sIscOs/sendPhoto", {
+                    chat_id: '773397969',
                     photo: body.image,
                     // @ts-ignore
-                    caption: `<strong>${doc.data().person_name}</strong> has fallen down at ${doc.data().address}. Please respond in time. We are continuously monitoring.`,
+                    caption: `<strong>${body.name}</strong> has been detected at ${body.location} on the device ${body.device_id}. </br> Detection time- ${body.time} </br> Please respond in time. We are continuously monitoring.`,
                     parse_mode: "HTML"
                 }
             )
